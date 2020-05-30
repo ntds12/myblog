@@ -14,7 +14,7 @@ import { sleep } from '../../utils/sleep';
 import Lines from './lines';
 import Menu from './Menu/menu';
 
-
+import window from "global";
 
 const navbar = () => {
   let [arrayOfChars, setArrayOfChars]: any = useState([]);

@@ -22,7 +22,6 @@ const menu:React.FC<any> = ({close,changeCloseToTrue}) => {
         
         <i className={MenuStyles.icon} onClick={()=>{
           changeCloseToTrue();
-          console.log(close);
         }}><b>&nbsp;&nbsp;&nbsp;&nbsp;x</b></i>
         </p>
         <p className={MenuStyles.p_blog}>blog</p>

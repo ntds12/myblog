@@ -12,7 +12,6 @@ const lines = (props: any) => {
   useEffect(() => {
     setCount((val: any) => val + 1);
   }, [props.linesColor]);
-  console.log('object')
   return (
     <div className={NavbarStyles.lines_wrapper} onClick={() => {
       console.log('hello lines');
