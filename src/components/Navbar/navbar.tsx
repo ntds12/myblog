@@ -14,7 +14,7 @@ import { sleep } from '../../utils/sleep';
 import Lines from './lines';
 import Menu from './Menu/menu';
 
-import window from "global";
+import windows from "global";
 
 const navbar = () => {
   let [arrayOfChars, setArrayOfChars]: any = useState([]);
@@ -41,7 +41,7 @@ const navbar = () => {
   //   }
   // }
 
-  window.addEventListener('scroll', async (e) => {
+  addEventListener('scroll', async () => {
     if (window.scrollY >= 10) {
       setTriggerScroll((val: any) => val = true);
 
