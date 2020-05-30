@@ -41,7 +41,8 @@ const navbar = () => {
   //   }
   // }
 
-  addEventListener('scroll', async () => {
+
+  typeof window !== 'undefined' && window.addEventListener('scroll', async () => {
     if (window.scrollY >= 10) {
       setTriggerScroll((val: any) => val = true);
 
