@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
+import Navbar from './Navbar/navbar';
+
 const header = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -15,10 +17,11 @@ const header = () => {
 
   return (
     <div>
-      <Link to='/'>
+      <Navbar />
+      {/* <Link to='/'>
         {data.site.siteMetadata.title}
-      </Link>
-      <h1>{data.site.siteMetadata.author}</h1>
+      </Link> */}
+      {/* <h1>{data.site.siteMetadata.author}</h1> */}
     </div>
   )
 };

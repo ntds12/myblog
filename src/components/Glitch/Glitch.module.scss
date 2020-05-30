@@ -1,0 +1,7 @@
+.glitch_one{
+  position: absolute;
+  clip: rect(var(--random-one), var(--random-two) ,var(--random-three),var(--random-four) );
+  top:var(--top-val);
+  right:var(--right-val);
+  z-index: 100;
+}

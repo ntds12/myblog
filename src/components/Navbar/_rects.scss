@@ -1,0 +1,62 @@
+.rect_n{
+  clip: rect(0,16px,20px,0px);
+  margin-top: -10px;
+  margin-right: 5px;
+}
+
+.rect_a{
+  clip: rect(0,36px,20px,20px);
+  margin-right: 10px;
+  margin-top: -10px;
+}
+
+.rect_r{
+  clip: rect(0,55px,50px,36px);
+  margin-top: 10px;
+}
+
+.rect_i{
+  clip: rect(0,70px,10px,55px);
+  margin-top: 10px;
+}
+
+.rect_m{
+  clip: rect(20px,85px,40px,70px);
+  margin-top: 10px;
+}
+
+.rect_aa{
+  clip: rect(20px,100px,40px,85px);
+  margin-top: 10px;
+  margin-right:5px;
+}
+
+.rect_nn{
+  clip: rect(25px,16px,90px,0px);
+  margin-top: 10px;
+  margin-left:8px;
+}
+
+.rect_nnn{
+  clip: rect(0px,110px,110px,70px);
+  margin-top:10px;
+  margin-right:20px;
+}
+
+.black_rect_one{
+  width: 100px;
+  height:1px;
+  margin-top: 10px;
+  background-color: red;
+  position: absolute;
+  right:10px;
+}
+
+.black_rect_two{
+  width: 10px;
+  height:3px;
+  margin-top: 10px;
+  background-color: rgb(25, 0, 255);
+  position: absolute;
+  right:90px;
+}

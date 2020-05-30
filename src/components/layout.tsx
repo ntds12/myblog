@@ -5,7 +5,7 @@ import '../styles/index.scss';
 
 const Layout = (props) => {
   return (
-    <div>
+    <div className="layout">
       <Header />
       {props.children}
     </div>

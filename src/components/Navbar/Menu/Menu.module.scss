@@ -1,0 +1,21 @@
+.menu{
+  top: 0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-color: rgb(89, 170, 170);
+  position: absolute;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.p{
+  width:10px;
+  height:10px;
+}
+
+.p_blog{
+  margin-top: 20px;
+  margin-left: 10px;
+}
