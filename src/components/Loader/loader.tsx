@@ -20,7 +20,7 @@ const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
 
     while (true) {
 
-      if (loaderClone > 99) {
+      if (loaderClone > 100) {
         await sleep(100);
         loaderDefault();
         break;
@@ -83,7 +83,7 @@ const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
           fontFamily: "sans-serif",
           letterSpacing: "1px"
         }}
-      >Buffering {loadedNumber}%</div>
+      >Buffering {loaderClone}%</div>
     </div>
   )
 }
