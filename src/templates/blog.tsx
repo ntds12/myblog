@@ -65,6 +65,7 @@ const Blog = (props: any) => {
       if (fontLoaded && fontLoaded2) {
 
         if (mounted.current) {
+          await sleep(500);
           setAllow(true);
         }
 
@@ -92,7 +93,7 @@ const Blog = (props: any) => {
   return (
     <Page allow={allow}>
       <Layout>
-        <Head title="abbas" />
+        <Head title={path} />
         <div className={PostStyles.post_wrapper}>
           <h1>{props.data.contentfulBlogPost.title}</h1>
           <p className={PostStyles.date}>{props.data.contentfulBlogPost.publishedDate}</p>
