@@ -6,6 +6,7 @@ const incrementCounter1 = () => counter1++;
 const incerementLoaderClone = () => loaderClone++;
 const loaderCloneHalf = () => loaderClone = 50;
 const loaderCloneFull = () => loaderClone = 100;
+const loaderDefault = () => loaderClone = 0;
 
 export {
   counter1,
@@ -13,5 +14,6 @@ export {
   incrementCounter1,
   incerementLoaderClone,
   loaderCloneHalf,
-  loaderCloneFull
+  loaderCloneFull,
+  loaderDefault
 };

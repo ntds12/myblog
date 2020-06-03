@@ -8,7 +8,8 @@ import {
   loaderClone,
   incerementLoaderClone,
   loaderCloneHalf,
-  loaderCloneFull
+  loaderCloneFull,
+  loaderDefault
 } from './loader.state';
 
 const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
@@ -21,6 +22,7 @@ const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
 
       if (loaderClone > 99) {
         await sleep(100);
+        loaderDefault();
         break;
       }
       setLoadedNumber((val: any) => val + 1);
