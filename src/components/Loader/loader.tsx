@@ -2,28 +2,29 @@ import React, { FC, useEffect, useState, memo } from 'react';
 
 import gif from "./g.gif";
 import { sleep } from '../../utils/sleep';
+import { counter1, incrementCounter1 } from './loader.state';
 
 const loader: FC<any> = ({ fontLoad, fontLoad2 }) => {
   let [loadedNumber, setLoadedNumber] = useState(0);
-  let loadedClone = 0;
 
   const loadedWatcher = async () => {
 
+    let loadedClone = 0;
 
-    if (loadedNumber < 50 || (loadedNumber >= 50 && loadedNumber < 100)) {
-      while (true) {
-        setLoadedNumber((val: any) => val + 1);
-        loadedClone++;
-
-        if (loadedClone === 50 || loadedNumber === 100) {
-          break;
-        }
-
-        await sleep(5);
+    console.log('object')
+    while (true) {
+      if (loadedClone >= 25) {
+        break;
       }
+      setLoadedNumber((val: any) => val + 1);
+      loadedClone++;
+
+
+
+      await sleep(1);
     }
 
-    if (fontLoad) {
+    if (fontLoad && counter1 === 0) {
       loadedClone = 50;
       setLoadedNumber((val: any) => 50);
     }
@@ -33,7 +34,8 @@ const loader: FC<any> = ({ fontLoad, fontLoad2 }) => {
       setLoadedNumber((val: any) => 100);
     }
 
-
+    console.log(counter1);
+    incrementCounter1();
 
   }
 
