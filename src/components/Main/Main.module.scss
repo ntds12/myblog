@@ -2,32 +2,27 @@
   font-family: "Chelsea";
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
-  width:80%;
-  height:calc(100% );
   background-color: rgba(20, 211, 211, 0.465);
   color: rgb(255, 255, 255);
   border-radius: 3px;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  left:50%;
-  top:52%;
-  transform: translate(-50%, -50%);
   z-index: 10;
-  align-content: center;
-  padding:10px;
+  padding-top:80px;
+  height:35%;
+  padding: 20px;
 }
+
 
 .hello{
   color: white;
   text-align: center;
   font-size: 50px;
-  margin-top: -60px;
+  margin-top: 20px;
   margin-bottom: 10px;
-  width:100%;
-  height:60px;
   display: block;
+  height:80px;
+
 }
 
 .div1{
@@ -35,30 +30,18 @@
   height:200px;
 }
 
-.spanz{
-  display:block;
-  width:200px;
-  height:100px;
-  margin-bottom: -120px;
-  text-align: center;
-}
-
-@media(max-width:180px){
-  .mainClass{
-    display: none;
+@media(max-width:203px){
+  .hello{
+    font-size: 20px;
   }
-}
-
-@media(max-height:449px){
-  .mainClass{
-    display: none;
+  
+  .div1{
+    font-size: 14px;
   }
 }
 
 @media(min-width:180px){
-  .mainClass{
-    height:70%;
-  }
+
   .hello{
     font-size:35px;
     margin-bottom: 0px;
@@ -66,6 +49,7 @@
   .mainClass{
     font-size: 15px;
   }
+
 }
 
 @media (min-width:280px){
@@ -80,5 +64,15 @@
 @media (max-width:244px){
   .spanz{
     font-size:10px;
+  }
+}
+@media(max-width:182px){
+  .mainClass{
+    height:45%;
+    align-items: center;
+    align-content: center;
+  }
+  .hello{
+    height:30px;
   }
 }

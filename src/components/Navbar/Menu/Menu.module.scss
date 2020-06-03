@@ -8,14 +8,32 @@
   font-size: 15px;
   display: flex;
   flex-wrap: wrap;
+  z-index: 99999999;
 }
 
 .p{
   width:10px;
   height:10px;
+  font-size:20px;
 }
 
-.p_blog{
-  margin-top: 20px;
-  margin-left: 10px;
+.p_blog_link{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.p_blog_link:hover{
+  transition: all 1s linear; 
+  color: orange;
+}
+
+.p_blog_link_hr{
+  color: silver ;
+  border: 1px silver solid;
+  margin-top: -60px;
+  width:80%;
+  margin-left: 20px;
+  
 }

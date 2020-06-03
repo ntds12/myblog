@@ -1,8 +1,7 @@
-import React, { useEffect, createRef } from 'react';
+import React, { createRef } from 'react';
 
 import { particle } from './interfaces';
 import { rand } from '../../utils/randomNumber';
-import { sleep } from '../../utils/sleep';
 
 class ParticleComponent extends React.Component {
   canvasRef: any = createRef();
@@ -20,12 +19,37 @@ class ParticleComponent extends React.Component {
     this.canvasRef.current.height = window.innerHeight;
 
     let particlesArray: any;
-    let linesArray: any;
 
     window.addEventListener('resize', (e) => {
-      this.canvasRef.current.width = window.innerWidth;
-      this.canvasRef.current.height = window.innerHeight;
+      if (this.canvasRef.current) {
+        this.canvasRef.current.width = window.innerWidth;
+        this.canvasRef.current.height = window.innerHeight;
+        particlesArray.forEach((particle: any) => {
+
+          if (particle.x > this.canvasRef.current.width) {
+            particle.x = this.canvasRef.current.width - 10;
+          }
+          if (particle.y > this.canvasRef.current.height) {
+            particle.y = this.canvasRef.current.height - 10;
+          }
+
+        })
+      };
     });
+
+    // window.addEventListener('scroll', (e) => {
+    //   this.canvasRef.current.width = window.innerWidth;
+    //   this.canvasRef.current.height = window.innerHeight;
+    //   if (window.scrollY >= 10) {
+    //     this.canvasRef.current.style.top = "90px"
+    //     this.canvasRef.current.height = window.innerHeight - 80;
+    //     particlesArray.forEach((particle: any) => {
+    //       if (particle.y > 180) {
+    //         particle.y = 50;
+    //       }
+    //     })
+    //   }
+    // });
 
     class Particle implements particle {
       x: any;
@@ -42,7 +66,7 @@ class ParticleComponent extends React.Component {
         size: number,
         color: string
       ) {
-        this.x = x;
+        this.x = x - 10;
         this.y = y;
         this.directionX = directionX;
         this.directionY = directionY;
@@ -58,26 +82,29 @@ class ParticleComponent extends React.Component {
       }
 
       update(canvasRef: any) {
-        if (this.x > canvasRef.current.width || this.x < 0) {
-          this.directionX = -this.directionX;
-        }
-        if (this.y > canvasRef.current.height - 10 || this.y < 0) {
-          this.directionY = -this.directionY;
-        }
+        if (canvasRef.current) {
+          if (this.x > canvasRef.current.width - 10 || this.x < 0) {
+            this.directionX = -this.directionX;
+          }
+          if (this.y > canvasRef.current.height - 10 || this.y < 0) {
+            this.directionY = -this.directionY;
+          }
 
-        this.x += this.directionX;
-        this.y += this.directionY;
-        this.draw();
+          this.x += this.directionX;
+          this.y += this.directionY;
+          this.draw();
+        }
       }
     }
+
     const init = () => {
       particlesArray = [];
-      linesArray = [];
+
       let numberOfParticles = 20;
       for (let i = 0; i < numberOfParticles; i++) {
         let size = (Math.random() * 4) + 2;
-        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let x = (Math.random() * ((innerWidth - 10 - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((innerHeight - 10 - size * 2) - (size * 2)) + size * 2);
         let directionX = rand();
         let directionY = rand();
         let color = "silver";
@@ -146,9 +173,10 @@ class ParticleComponent extends React.Component {
         ref={this.canvasRef}
         style={{
           "position": "fixed",
+          "top": "0",
           "width": "100%",
           "height": "100%",
-          "top": "0"
+          "zIndex": -1
         }}
       ></canvas>
     )

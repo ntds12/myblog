@@ -1,19 +1,21 @@
 import React,{
-  useState
+  useState, useEffect, useLayoutEffect
 } from 'react';
 
 import * as MenuStyles from './Menu.module.scss';
+import { Link } from 'gatsby';
 
 const menu:React.FC<any> = ({close,changeCloseToTrue}) => {
+  
   
   return (
     <div 
       className={MenuStyles.menu}
       style={{
-        "display":close?"none":"block",
+        "width":close?"0":"100%",
         "overflow":"hidden",
         "transition":"all .5s linear",
-        "willChange":"display",
+        "willChange":"width",
         "transform":"translateZ(0)"
       }}
     >
@@ -24,7 +26,12 @@ const menu:React.FC<any> = ({close,changeCloseToTrue}) => {
           changeCloseToTrue();
         }}><b>&nbsp;&nbsp;&nbsp;&nbsp;x</b></i>
         </p>
-        <p className={MenuStyles.p_blog}>blog</p>
+        <p className="p_blog">
+          <Link to="/blog" className={MenuStyles.p_blog_link} onClick={changeCloseToTrue}>
+            Blog
+          </Link>
+        </p>
+        <hr className={MenuStyles.p_blog_link_hr}/>
       </div>
     </div>
   )

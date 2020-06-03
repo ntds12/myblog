@@ -1,6 +1,19 @@
 @import "./utils/vars";
 @import "./sharedFonts/fonts.scss";
 @import "./vars";
+
+@font-face {
+  font-family: "Rock";
+  src: url("./sharedFonts/RockSalt-Regular.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: "Chelsea";
+  src: url("./sharedFonts/ChelseaMarket-Regular.ttf") format("truetype");
+}
+
+
 *{
   box-sizing: border-box;
   margin:0;
@@ -9,9 +22,17 @@
 
 body{
   background-color: black;
+  min-height: 1000px;
 }
 
-.layout{
-  position: relative;
-  height:calc(100vh );
+.p_blog{
+  margin-top: 70px;
+  margin-left: 30px;
+  width:100px;
+  height:100px;
+}
+
+.p_blog:hover{
+  transition: all .4s linear ;
+  color:orange; 
 }

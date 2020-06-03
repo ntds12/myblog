@@ -1,0 +1,148 @@
+.div{
+  position: relative;
+  font-family: "Chelsea";
+  color: white;
+  height:50%;
+  width:200px;
+  background-color: rgba(74, 141, 135, 0.383);
+  border-radius: 3px;
+  width:100%;
+  text-align: center;
+  height:40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.h1{
+  padding: 40px;
+  height:10px;
+  margin-top: 10px; 
+  margin-bottom: 15px;
+
+}
+
+.skill_wrap{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width:80%;
+  height:100%;
+  text-align: left;
+  align-content: flex-start;
+  margin-top: 55px;
+
+}
+
+.skill{
+  width:40%;
+  margin-bottom: 30px;
+  height:10px;
+}
+
+.bar{
+  height:15px;
+  font-size: 10px;
+  text-align: right;
+  background-color: rgb(221, 145, 45);
+  padding-right: 10px;
+  padding-top: 1px;
+  margin-left: 20px;
+  width:0%;
+  color:transparent;
+}
+
+.bar_wrapper{
+  width:60%;
+}
+
+.react_bar{
+  animation: react_bar 1s linear forwards;
+}
+
+.vue_bar{
+  animation: vue_bar 1s linear forwards;
+}
+
+.php_bar{
+  animation: php_bar 1s linear forwards;
+}
+
+.wordpress_bar{
+  animation: wordpress_bar 1s linear forwards;
+}
+
+.python_bar{
+  animation: python_bar 1s linear forwards;
+}
+
+@keyframes react_bar{
+  0% {
+    width:0%;
+    color: transparent;
+  }
+  80%{
+    color:transparent;
+  }
+  100%{
+    width:80%;
+    color:white;
+  }
+}
+
+@keyframes vue_bar{
+  0% {
+    width:0%;
+    color: transparent;
+  }
+  80%{
+    color:transparent;
+  }
+  100%{
+    width:60%;
+    color:white;
+  }
+}
+
+@keyframes php_bar{
+  0% {
+    width:0%;
+    color: transparent;
+  }
+  80%{
+    color:transparent;
+  }
+  100%{
+    width:40%;
+    color:white;
+  }
+}
+
+@keyframes wordpress_bar{
+  0% {
+    width:0%;
+    color: transparent;
+  }
+  80%{
+    color:transparent;
+  }
+  100%{
+    width:20%;
+    color:white;
+  }
+}
+
+@keyframes python_bar{
+  0% {
+    width:0%;
+    color: transparent;
+  }
+  80%{
+    color:transparent;
+  }
+  100%{
+    width:40%;
+    color:white;
+  }
+}

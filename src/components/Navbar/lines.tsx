@@ -10,11 +10,14 @@ import shortid from 'shortid';
 const lines = (props: any) => {
   let [count, setCount] = useState(0);
   useEffect(() => {
-    setCount((val: any) => val + 1);
-  }, [props.linesColor]);
+    let mounted = true;
+    if (mounted) setCount((val: any) => val + 1);
+    return function () {
+      mounted = false;
+    }
+  }, []);
   return (
     <div className={NavbarStyles.lines_wrapper} onClick={() => {
-      console.log('hello lines');
       props.changeCloseToFalse();
     }}>
 

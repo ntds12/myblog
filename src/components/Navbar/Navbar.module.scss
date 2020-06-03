@@ -2,11 +2,6 @@
 @import "./rects.scss";
 @import "./blog";
 
-@font-face {
-  font-family: "Rock";
-  src: url("./RockSalt-Regular.ttf") format("truetype");
-}
-
 .div{
   width:100%;
   height:70px;
@@ -16,17 +11,17 @@
   font-size:10px;
   position: fixed;
   z-index: 900;
+  top:0;
 }
 
 .triggered{
-  transition:all 1s;
+  animation: triggered 1s linear forwards;
+  
   background-color: rgb(75, 151, 165);
 }
 
-
-
 .untriggered{
-  transition: all 1s;
+  animation: untriggered 1s linear forwards;
   background-color: transparent;
 }
 
@@ -38,6 +33,14 @@
   width: 100px;
   line-height: 25px;
   color:rgb(200, 200, 200);
+  h1{
+    transition: all 1s linear;
+  }
+  
+  h1:hover{
+    transition: all 1s linear;
+    color: orange;
+  }
 }
 
 .lines_wrapper{
