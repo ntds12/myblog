@@ -11,7 +11,6 @@ import Layout from "../components/layout";
 import Head from "../components/head";
 import Particles from "../components/ParticlesCanvas/particles";
 import MainWrap from "../components/MainWrap/mainWrap";
-import Glitch from "../components/Glitch/glitch";
 import { sleep } from "../utils/sleep";
 import Loader from "../components/Loader/loader";
 
@@ -100,7 +99,6 @@ class IndexPage extends React.Component<any, any> {
           <Layout>
             <Head title="Nariman Talayi" />
             <Particles />
-            <Glitch />
             <MainWrap />
             <span style={{
               color: "white",
