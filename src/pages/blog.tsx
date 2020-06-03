@@ -12,7 +12,7 @@ import { Page } from '.';
 import {
   allow,
   allowTrue
-} from './blog.state';
+} from '../blog.state';
 
 
 const BlogPage = () => {
