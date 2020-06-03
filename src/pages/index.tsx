@@ -13,12 +13,17 @@ import Particles from "../components/ParticlesCanvas/particles";
 import MainWrap from "../components/MainWrap/mainWrap";
 import Glitch from "../components/Glitch/glitch";
 import { sleep } from "../utils/sleep";
+import Loader from "../components/Loader/loader";
 
-export const Page: FC<any> = ({ allow, children }): JSX.Element => {
-  const jsx = allow && (
-    children
-  );
-  return jsx;
+export const Page: FC<any> = ({
+  fontLoad,
+  fontLoad2,
+  allow,
+  children
+}): JSX.Element => {
+
+  if (allow) return children;
+  else return <Loader fontLoad={fontLoad} fontLoad2={fontLoad2} />
 }
 
 class IndexPage extends React.Component<any, any> {
@@ -86,20 +91,28 @@ class IndexPage extends React.Component<any, any> {
 
   render() {
     return (
-      <Page allow={this.state.allow} >
-        <Layout>
-          <Head title="Nariman Talayi" />
-          <Particles />
-          <Glitch />
-          <MainWrap />
-          <span style={{
-            color: "white",
-            display: "block",
-            textAlign: "center",
-            fontFamily: "Chelsea"
-          }}>Contact me at:<br /> ntnirvana91@gmail.com</span>
-        </Layout>
-      </Page >
+      <>
+        <Page
+          fontLoad={this.state.fontLoad}
+          fontLoad2={this.state.fontLoad2}
+          allow={this.state.allow}
+        >
+          <Layout>
+            <Head title="Nariman Talayi" />
+            <Particles />
+            <Glitch />
+            <MainWrap />
+            <span style={{
+              color: "white",
+              display: "block",
+              textAlign: "center",
+              fontFamily: "Chelsea"
+            }}>Contact me at:<br /> ntnirvana91@gmail.com</span>
+
+          </Layout>
+        </Page >
+
+      </>
     );
   }
 

@@ -15,13 +15,12 @@
 }
 
 .triggered{
-  animation: triggered 1s linear forwards;
-  
+  transition: all 1s linear;
   background-color: rgb(75, 151, 165);
 }
 
 .untriggered{
-  animation: untriggered 1s linear forwards;
+  transition: all 1s linear;
   background-color: transparent;
 }
 
