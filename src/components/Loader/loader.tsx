@@ -2,39 +2,47 @@ import React, { FC, useEffect, useState, memo } from 'react';
 
 import gif from "./g.gif";
 import { sleep } from '../../utils/sleep';
-import { counter1, incrementCounter1 } from './loader.state';
+import {
+  counter1,
+  incrementCounter1,
+  loaderClone,
+  incerementLoaderClone,
+  loaderCloneHalf,
+  loaderCloneFull
+} from './loader.state';
 
-const loader: FC<any> = ({ fontLoad, fontLoad2 }) => {
+const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
   let [loadedNumber, setLoadedNumber] = useState(0);
 
   const loadedWatcher = async () => {
 
-    let loadedClone = 0;
 
-    console.log('object')
     while (true) {
-      if (loadedClone >= 25) {
+
+      if (loaderClone > 99) {
+        await sleep(100);
         break;
       }
       setLoadedNumber((val: any) => val + 1);
-      loadedClone++;
-
+      incerementLoaderClone();
 
 
       await sleep(1);
     }
 
     if (fontLoad && counter1 === 0) {
-      loadedClone = 50;
-      setLoadedNumber((val: any) => 50);
+      loaderCloneHalf();
+      setLoadedNumber(50);
     }
 
     if (fontLoad2) {
-      loadedClone = 100;
-      setLoadedNumber((val: any) => 100);
+      loaderCloneFull();
+      setLoadedNumber(100);
+
     }
 
-    console.log(counter1);
+    console.log(allow);
+
     incrementCounter1();
 
   }
@@ -42,6 +50,7 @@ const loader: FC<any> = ({ fontLoad, fontLoad2 }) => {
   useEffect(() => {
     loadedWatcher();
   }, [fontLoad, fontLoad2]);
+
 
 
   return (

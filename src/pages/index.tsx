@@ -22,7 +22,7 @@ export const Page: FC<any> = ({
 }): JSX.Element => {
 
   if (allow) return children;
-  else return <Loader fontLoad={fontLoad} fontLoad2={fontLoad2} />
+  else return <Loader fontLoad={fontLoad} fontLoad2={fontLoad2} allow={allow} />
 }
 
 class IndexPage extends React.Component<any, any> {

@@ -9,6 +9,10 @@ import * as BlogStyles from "./Blog.module.scss";
 import shortid from 'shortid';
 import { sleep } from '../utils/sleep';
 import { Page } from '.';
+import {
+  allow,
+  allowTrue
+} from './blog.state';
 
 
 const BlogPage = () => {
@@ -32,7 +36,8 @@ const BlogPage = () => {
   let mounted: any = useRef(false);
   let fontLoaded = false;
   let fontLoaded2 = false;
-  let [allow, setAllow]: any = useState(false);
+  let [render, setRender] = useState(false);
+
 
   async function checkFont() {
     while (true) {
@@ -58,12 +63,17 @@ const BlogPage = () => {
 
       if (fontLoaded && fontLoaded2) {
 
+        console.log(fontLoaded, fontLoaded2);
         if (mounted.current) {
-          setAllow(true);
+          await sleep(500);
+          allowTrue();
         }
 
+
+        setRender(true);
         break;
       }
+
 
       await sleep(500);
     }
@@ -104,6 +114,7 @@ const BlogPage = () => {
         </div>
         <ParticleComponent />
       </Layout>
+
     </Page>
   );
 }
