@@ -10,7 +10,7 @@ import Particles from "../components/ParticlesCanvas/particles";
 import MainWrap from "../components/MainWrap/mainWrap";
 import { sleep } from "../utils/sleep";
 import Loader from "../components/Loader/loader";
-import { counterForShowingKane, incrementKaneCounter } from "./index.state";
+import { counterForShowingKane, incrementKaneCounter } from "../components/index.state";
 
 let count = 0;
 export const Page: FC<any> = ({
