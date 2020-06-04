@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState, memo, useRef } from 'react';
 import gif from "./g.gif";
 import { sleep } from '../../utils/sleep';
 import {
-  loaderClone, loaderCloneHalf, loaderCloneFull
+  loaderClone, loaderCloneHalf, loaderCloneFull, loaderCloneInc
 } from './loader.state';
 import { firstFont, secondFont, firstFontLoaded } from '../index.state';
 
@@ -18,6 +18,13 @@ const loader: FC<any> = () => {
   let [topVal, setTopVal] = useState("50%");
   let interval: any = useRef();
 
+  const inc = () => {
+    return new Promise((res) => {
+      setLoadedNumber((val: any) => val + 1);
+      res();
+    });
+  }
+
 
   const loadedWatcher = async () => {
     while (true) {
@@ -27,18 +34,22 @@ const loader: FC<any> = () => {
 
       if (secondFont) {
         setLoadedNumber((val: any) => 100);
+        loaderCloneHalf();
         break;
       }
 
       if (firstFont && secondFont) {
         await sleep(100);
+        loaderCloneFull();
         break;
       }
 
-      if ((!firstFont && loadedNumber < 50) ||
-        (!secondFont && (loadedNumber >= 50 && loadedNumber < 100))
-      ) setLoadedNumber((val: any) => val + 1);
+      if (loaderClone < 100) {
+        console.log(loaderClone);
+        await inc();
+      };
 
+      loaderCloneInc();
       await sleep(10);
     }
   }
