@@ -29,7 +29,6 @@ class IndexPage extends React.Component<any, any> {
 
   mounted = true;
 
-
   constructor(props: any) {
     super(props)
 
@@ -86,16 +85,12 @@ class IndexPage extends React.Component<any, any> {
               allow: true
             });
           }
-          console.log('object')
 
           break;
 
-
         }
 
-
         await sleep(500);
-
       }
     }
   }

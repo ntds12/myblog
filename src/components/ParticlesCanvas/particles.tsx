@@ -27,10 +27,10 @@ class ParticleComponent extends React.Component {
         particlesArray.forEach((particle: any) => {
 
           if (particle.x > this.canvasRef.current.width) {
-            particle.x = this.canvasRef.current.width - 10;
+            particle.x -= 100;
           }
           if (particle.y > this.canvasRef.current.height) {
-            particle.y = this.canvasRef.current.height - 10;
+            particle.y -= 100;
           }
 
         })
@@ -58,6 +58,8 @@ class ParticleComponent extends React.Component {
       directionY: any;
       size: any;
       color: string;
+      innerHeightArr: Array<any> = [];
+
       constructor(
         x: number,
         y: number,
@@ -82,12 +84,28 @@ class ParticleComponent extends React.Component {
       }
 
       update(canvasRef: any) {
+
         if (canvasRef.current) {
+
           if (this.x > canvasRef.current.width - 10 || this.x < 0) {
             this.directionX = -this.directionX;
+
+            if (this.x > canvasRef.current.width - 10) {
+              this.x -= 2;
+            }
+            else {
+              this.x += 2;
+            }
           }
           if (this.y > canvasRef.current.height - 10 || this.y < 0) {
             this.directionY = -this.directionY;
+
+            if (this.y > canvasRef.current.height - 10) {
+              this.y -= 2;
+            }
+            else {
+              this.y += 2;
+            }
           }
 
           this.x += this.directionX;
