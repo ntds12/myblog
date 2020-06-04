@@ -1,12 +1,14 @@
 var counter1 = 0;
 var loaderClone = 0;
-
+var hundredCounter = 0;
 
 const incrementCounter1 = () => counter1++;
 const incerementLoaderClone = () => loaderClone++;
 const loaderCloneHalf = () => loaderClone = 50;
 const loaderCloneFull = () => loaderClone = 100;
 const loaderDefault = () => loaderClone = 0;
+const hundredCounterInc = () => hundredCounter++;
+const hundredCounterDefault = () => hundredCounter = 0;
 
 export {
   counter1,
@@ -15,5 +17,8 @@ export {
   incerementLoaderClone,
   loaderCloneHalf,
   loaderCloneFull,
-  loaderDefault
+  loaderDefault,
+  hundredCounter,
+  hundredCounterInc,
+  hundredCounterDefault
 };

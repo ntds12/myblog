@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, memo } from 'react';
+import React, { FC, useEffect, useState, memo, useRef } from 'react';
 
 import gif from "./g.gif";
 import { sleep } from '../../utils/sleep';
@@ -6,45 +6,41 @@ import {
   counter1,
   incrementCounter1,
   loaderClone,
-  incerementLoaderClone,
   loaderCloneHalf,
   loaderCloneFull,
-  loaderDefault
+  incerementLoaderClone,
+  loaderDefault,
 } from './loader.state';
 
+
+var locationArr: any = [];
 const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
   let [loadedNumber, setLoadedNumber] = useState(0);
+  let interval: any = useRef();
+
 
   const loadedWatcher = async () => {
 
-
-    while (true) {
-
-      if (loaderClone > 100) {
-        await sleep(100);
-        loaderDefault();
-        break;
-      }
-      setLoadedNumber((val: any) => val + 1);
-      incerementLoaderClone();
-
-
-      await sleep(1);
-    }
-
-    if (fontLoad && counter1 === 0) {
+    if (fontLoad && fontLoad.number === 49 && counter1 === 0) {
       loaderCloneHalf();
-      setLoadedNumber(50);
+      setLoadedNumber(1);
     }
 
-    if (fontLoad2) {
+    if (fontLoad && fontLoad2.number === 49) {
       loaderCloneFull();
-      setLoadedNumber(100);
-
+      setLoadedNumber(1);
+      await sleep(100)
     }
 
-    console.log(allow);
 
+    var loc = window.location.href.split("/");
+    locationArr.push(loc[loc.length - 2] + "/" + loc[loc.length - 1]);
+    if (locationArr.length > 50 && locationArr[locationArr.length - 1] !== locationArr[locationArr.length - 2]) {
+      locationArr = [];
+      loaderDefault();
+    }
+
+    if (loaderClone < 99) incerementLoaderClone();
     incrementCounter1();
 
   }

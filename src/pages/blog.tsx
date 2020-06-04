@@ -34,10 +34,13 @@ const BlogPage = () => {
   `);
 
   let mounted: any = useRef(false);
-  let fontLoaded = false;
-  let fontLoaded2 = false;
-  let [render, setRender] = useState(false);
 
+  let fontLoaded = false;
+  let [fontLoadedState, setFontLoadedState] = useState({});
+  let [fontLoadedState2, setFontLoadedState2] = useState({});
+
+  let fontLoaded2 = false;
+  let [allow, setAllow]: any = useState(false);
 
   async function checkFont() {
     while (true) {
@@ -45,17 +48,25 @@ const BlogPage = () => {
       var font = new FontFaceObserver('Chelsea');
       var font2 = new FontFaceObserver('Rock');
 
-      font.load().then(() => {
+      font.load().then(async () => {
         if (mounted.current) {
           fontLoaded = true;
+          for (let i = 0; i < 50; i++) {
+            await sleep(1);
+            setFontLoadedState({ number: i, self: true });
+          }
         }
       }, () => {
         console.log('object2')
       });
 
-      font2.load().then(() => {
+      font2.load().then(async () => {
         if (mounted.current) {
           fontLoaded2 = true;
+          for (let i = 0; i < 50; i++) {
+            await sleep(1);
+            setFontLoadedState2({ number: i, self: true });
+          }
         }
       }, () => {
         console.log('object2')
@@ -63,17 +74,13 @@ const BlogPage = () => {
 
       if (fontLoaded && fontLoaded2) {
 
-        console.log(fontLoaded, fontLoaded2);
         if (mounted.current) {
           await sleep(500);
-          allowTrue();
+          setAllow(true);
         }
 
-
-        setRender(true);
         break;
       }
-
 
       await sleep(500);
     }
@@ -89,7 +96,11 @@ const BlogPage = () => {
   }, [])
 
   return (
-    <Page allow={allow}>
+    <Page
+      allow={allow}
+      fontLoad={fontLoadedState}
+      fontLoad2={fontLoadedState2}
+    >
       <Layout>
         <div className={BlogStyles.blog_wrap}>
           <h1 className={BlogStyles.title}>My Blog</h1>

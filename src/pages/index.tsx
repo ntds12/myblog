@@ -47,23 +47,39 @@ class IndexPage extends React.Component<any, any> {
         var font = new FontFaceObserver('Chelsea');
         var font2 = new FontFaceObserver('Rock');
 
-        font.load().then(() => {
+        font.load().then(async () => {
           if (this.mounted) {
-            this.setState({ fontLoad: true });
+            for (let i = 0; i < 50; i++) {
+              await sleep(1);
+              this.setState({
+                fontLoad: {
+                  number: i,
+                  self: true
+                }
+              });
+            }
           }
         }, () => {
           console.log('object2')
         });
 
-        font2.load().then(() => {
+        font2.load().then(async () => {
           if (this.mounted) {
-            this.setState({ fontLoad2: true })
+            for (let i = 0; i < 50; i++) {
+              await sleep(1);
+              this.setState({
+                fontLoad2: {
+                  number: i,
+                  self: true
+                }
+              })
+            }
           }
         }, () => {
           console.log('object2')
         });
 
-        if (this.state.fontLoad && this.state.fontLoad2) {
+        if (this.state.fontLoad.self && this.state.fontLoad2.self) {
 
           if (this.mounted) {
             this.setState({
@@ -83,6 +99,7 @@ class IndexPage extends React.Component<any, any> {
       }
     }
   }
+
 
   componentWillUnmount() {
     this.mounted = false;

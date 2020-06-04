@@ -37,6 +37,9 @@ const Blog = (props: any) => {
 
   let mounted: any = useRef(false);
   let fontLoaded = false;
+  let [fontLoadedState, setFontLoadedState] = useState({});
+  let [fontLoadedState2, setFontLoadedState2] = useState({});
+
   let fontLoaded2 = false;
   let [allow, setAllow]: any = useState(false);
 
@@ -46,17 +49,25 @@ const Blog = (props: any) => {
       var font = new FontFaceObserver('Chelsea');
       var font2 = new FontFaceObserver('Rock');
 
-      font.load().then(() => {
+      font.load().then(async () => {
         if (mounted.current) {
           fontLoaded = true;
+          for (let i = 0; i < 50; i++) {
+            await sleep(1);
+            setFontLoadedState({ number: i, self: true });
+          }
         }
       }, () => {
         console.log('object2')
       });
 
-      font2.load().then(() => {
+      font2.load().then(async () => {
         if (mounted.current) {
           fontLoaded2 = true;
+          for (let i = 0; i < 50; i++) {
+            await sleep(1);
+            setFontLoadedState2({ number: i, self: true });
+          }
         }
       }, () => {
         console.log('object2')
@@ -89,9 +100,13 @@ const Blog = (props: any) => {
   let path = props.path;
   path = path.split("/");
   path = path[path.length - 1]
-  console.log(path);
   return (
-    <Page allow={allow}>
+    <Page
+      fontLoad={fontLoadedState}
+      fontLoad2={fontLoadedState2}
+      allow={allow}
+
+    >
       <Layout>
         <Head title={path} />
         <div className={PostStyles.post_wrapper}>
