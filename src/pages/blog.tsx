@@ -99,7 +99,7 @@ const BlogPage = () => {
     <Page
       allow={allow}
       fontLoad={fontLoadedState}
-      fontLoad2={fontLoadedState2}
+      fontLoad2={fontLoaded2}
     >
       <Layout>
         <div className={BlogStyles.blog_wrap}>

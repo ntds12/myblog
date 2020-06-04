@@ -1,8 +1,5 @@
 import React, {
-  FC,
-  useEffect,
-  useState,
-  useLayoutEffect
+  FC, useState, useEffect, useLayoutEffect,
 } from "react";
 
 import FontFaceObserver from "fontfaceobserver";
@@ -13,7 +10,9 @@ import Particles from "../components/ParticlesCanvas/particles";
 import MainWrap from "../components/MainWrap/mainWrap";
 import { sleep } from "../utils/sleep";
 import Loader from "../components/Loader/loader";
+import { counterForShowingKane, incrementKaneCounter } from "./index.state";
 
+let count = 0;
 export const Page: FC<any> = ({
   fontLoad,
   fontLoad2,
@@ -21,8 +20,22 @@ export const Page: FC<any> = ({
   children
 }): JSX.Element => {
 
-  if (allow) return children;
-  else return <Loader fontLoad={fontLoad} fontLoad2={fontLoad2} allow={allow} />
+  if (allow) {
+    if (count < 1) {
+      const pos = localStorage.getItem('scrollpos') as string;
+      window.scrollTo(0, parseInt(pos));
+    }
+    if (document.body.clientHeight > 0) count++;
+    incrementKaneCounter();
+    return children;
+  }
+  else {
+    if (counterForShowingKane < 1) {
+      return <Loader fontLoad={fontLoad} fontLoad2={fontLoad2} allow={allow} />
+    } else {
+      return children;
+    }
+  }
 }
 
 class IndexPage extends React.Component<any, any> {
@@ -102,27 +115,25 @@ class IndexPage extends React.Component<any, any> {
 
   render() {
     return (
-      <>
-        <Page
-          fontLoad={this.state.fontLoad}
-          fontLoad2={this.state.fontLoad2}
-          allow={this.state.allow}
-        >
-          <Layout>
-            <Head title="Nariman Talayi" />
-            <Particles />
-            <MainWrap />
-            <span style={{
-              color: "white",
-              display: "block",
-              textAlign: "center",
-              fontFamily: "Chelsea"
-            }}>Contact me at:<br /> ntnirvana91@gmail.com</span>
+      <Page
+        fontLoad={this.state.fontLoad}
+        fontLoad2={this.state.fontLoad2}
+        allow={this.state.allow}
+      >
+        <Layout>
+          <Head title="Nariman Talayi" />
+          <Particles />
+          <MainWrap />
+          <span style={{
+            color: "white",
+            display: "block",
+            textAlign: "center",
+            fontFamily: "Chelsea"
+          }}>Contact me at:<br /> ntnirvana91@gmail.com</span>
 
-          </Layout>
-        </Page >
+        </Layout>
+      </Page >
 
-      </>
     );
   }
 

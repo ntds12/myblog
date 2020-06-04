@@ -105,6 +105,16 @@ const navbar = () => {
   }, []);
 
   useEffect(() => {
+    if (window.scrollY >= 10) {
+      if (mounted.current) setTriggerScroll((val: any) => val = true);
+
+      if (mounted.current) setLinesColor((val: any) => val = true);
+
+    } else {
+      if (mounted.current) setTriggerScroll((val: any) => val = false);
+
+      if (mounted.current) setLinesColor((val: any) => val = false);
+    }
     typeof window !== 'undefined' && window.addEventListener('scroll', async () => {
       if (window.scrollY >= 10) {
         if (mounted.current) setTriggerScroll((val: any) => val = true);
@@ -137,7 +147,7 @@ const navbar = () => {
           el
         ))
       }
-      <h1 ><a href="/blog" className={NavbarStyles.h1_blog}>blog</a></h1 >
+      <h1 ><Link to="/blog" className={NavbarStyles.h1_blog}>blog</Link></h1 >
       <Menu close={close} changeCloseToTrue={changeCloseToTrue} />
     </div >
   )

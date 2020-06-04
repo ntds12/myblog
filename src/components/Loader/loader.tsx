@@ -16,6 +16,7 @@ import {
 var locationArr: any = [];
 const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
   let [loadedNumber, setLoadedNumber] = useState(0);
+  let [topVal, setTopVal] = useState("50%");
   let interval: any = useRef();
 
 
@@ -47,6 +48,7 @@ const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
 
   useEffect(() => {
     loadedWatcher();
+
   }, [fontLoad, fontLoad2]);
 
 
@@ -61,9 +63,10 @@ const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
         alignItems: "center",
         width: "200px",
         position: "absolute",
-        top: "50%",
+        top: topVal,
         left: "50%",
-        transform: "translate(-50%,-50%)"
+        transform: "translate(-50%,-50%)",
+
       }}
     >
       <img
