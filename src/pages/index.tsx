@@ -37,7 +37,8 @@ class IndexPage extends React.Component<any, any> {
           color: "white",
           display: "block",
           textAlign: "center",
-          fontFamily: "Chelsea"
+          fontFamily: "Chelsea",
+          wordBreak: "break-word"
         }}>Contact me at:<br /> ntnirvana91@gmail.com</span>
 
       </Layout>
