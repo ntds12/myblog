@@ -91,7 +91,7 @@ class IndexPage extends React.Component<any, any> {
           console.log('object2')
         });
 
-        if (this.state.fontLoad.self && this.state.fontLoad2.self) {
+        if (this.state.fontLoad.number === 49 && this.state.fontLoad2.number === 49) {
 
           if (this.mounted) {
             this.setState({
