@@ -1,10 +1,12 @@
-let counterForShowingKane = 0;
+let firstFont = false;
+let secondFont = false;
 
-const incrementKaneCounter = () => {
-  counterForShowingKane++;
-}
+const firstFontLoaded = () => firstFont = true;
+const secondFontLoaded = () => secondFont = true;
 
 export {
-  counterForShowingKane,
-  incrementKaneCounter
+  firstFont,
+  secondFont,
+  firstFontLoaded,
+  secondFontLoaded
 }

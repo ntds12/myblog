@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, memo } from 'react';
 import FontFaceObserver from 'fontfaceobserver';
 
 import Layout from '../components/layout';
@@ -36,89 +36,22 @@ const Blog = (props: any) => {
   }
 
   let mounted: any = useRef(false);
-  let fontLoaded = false;
-  let [fontLoadedState, setFontLoadedState] = useState({});
-  let [fontLoadedState2, setFontLoadedState2] = useState({});
-
-  let fontLoaded2 = false;
-  let [allow, setAllow]: any = useState(false);
-
-  async function checkFont() {
-    while (true) {
-
-      var font = new FontFaceObserver('Chelsea');
-      var font2 = new FontFaceObserver('Rock');
-
-      font.load().then(async () => {
-        if (mounted.current) {
-          fontLoaded = true;
-          for (let i = 0; i < 50; i++) {
-            await sleep(1);
-            setFontLoadedState({ number: i, self: true });
-          }
-        }
-      }, () => {
-        console.log('object2')
-      });
-
-      font2.load().then(async () => {
-        if (mounted.current) {
-          fontLoaded2 = true;
-          for (let i = 0; i < 50; i++) {
-            await sleep(1);
-            setFontLoadedState2({ number: i, self: true });
-          }
-        }
-      }, () => {
-        console.log('object2')
-      });
-
-      if (fontLoaded && fontLoaded2) {
-
-        if (mounted.current) {
-          await sleep(500);
-          setAllow(true);
-        }
-
-        break;
-      }
-
-      await sleep(500);
-    }
-  }
-
-  useEffect(() => {
-    mounted.current = true;
-    checkFont();
-
-    return function () {
-      mounted.current = false;
-    }
-  }, [])
-
-
   let path = props.path;
   path = path.split("/");
   path = path[path.length - 1]
   return (
-    <Page
-      fontLoad={fontLoadedState}
-      fontLoad2={fontLoadedState2}
-      allow={allow}
 
-    >
-      <Layout>
-        <Head title={path} />
-        <div className={PostStyles.post_wrapper}>
-          <h1>{props.data.contentfulBlogPost.title}</h1>
-          <p className={PostStyles.date}>{props.data.contentfulBlogPost.publishedDate}</p>
-          <hr />
-          {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
-        </div>
-        <ParticleComponent />
-      </Layout>
-    </Page>
+    <Layout>
+      <Head title={path} />
+      <div className={PostStyles.post_wrapper}>
+        <h1>{props.data.contentfulBlogPost.title}</h1>
+        <p className={PostStyles.date}>{props.data.contentfulBlogPost.publishedDate}</p>
+        <hr />
+        {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
+      </div>
+      <ParticleComponent />
+    </Layout>
   )
 }
 
-export default Blog;
+export default memo(Blog);

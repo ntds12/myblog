@@ -3,54 +3,50 @@ import React, { FC, useEffect, useState, memo, useRef } from 'react';
 import gif from "./g.gif";
 import { sleep } from '../../utils/sleep';
 import {
-  counter1,
-  incrementCounter1,
-  loaderClone,
-  loaderCloneHalf,
-  loaderCloneFull,
-  incerementLoaderClone,
-  loaderDefault,
+  loaderClone, loaderCloneHalf, loaderCloneFull
 } from './loader.state';
+import { firstFont, secondFont, firstFontLoaded } from '../index.state';
 
 
 var locationArr: any = [];
-const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
+const loader: FC<any> = () => {
+  function useForceUpdate() {
+    const [value, setValue] = useState(0); // integer state
+    return () => setValue(value => ++value); // update the state to force render
+  }
   let [loadedNumber, setLoadedNumber] = useState(0);
   let [topVal, setTopVal] = useState("50%");
   let interval: any = useRef();
 
 
   const loadedWatcher = async () => {
+    while (true) {
+      if (firstFont) {
+        setLoadedNumber((val: any) => 50);
+      }
 
-    if (fontLoad && fontLoad.number === 49 && counter1 === 0) {
-      loaderCloneHalf();
-      setLoadedNumber(1);
+      if (secondFont) {
+        setLoadedNumber((val: any) => 100);
+        break;
+      }
+
+      if (firstFont && secondFont) {
+        await sleep(100);
+        break;
+      }
+
+      if ((!firstFont && loadedNumber < 50) ||
+        (!secondFont && (loadedNumber >= 50 && loadedNumber < 100))
+      ) setLoadedNumber((val: any) => val + 1);
+
+      await sleep(10);
     }
-
-    if (fontLoad && fontLoad2.number === 49) {
-      loaderCloneFull();
-      setLoadedNumber(1);
-      await sleep(100)
-    }
-
-
-    var loc = window.location.href.split("/");
-    locationArr.push(loc[loc.length - 2] + "/" + loc[loc.length - 1]);
-    if (locationArr.length > 50 && locationArr[locationArr.length - 1] !== locationArr[locationArr.length - 2]) {
-      locationArr = [];
-      loaderDefault();
-    }
-
-    if (loaderClone < 99) incerementLoaderClone();
-    incrementCounter1();
-
   }
 
   useEffect(() => {
     loadedWatcher();
 
-  }, [fontLoad, fontLoad2]);
-
+  }, []);
 
 
   return (
@@ -82,7 +78,7 @@ const loader: FC<any> = ({ fontLoad, fontLoad2, allow }) => {
           fontFamily: "sans-serif",
           letterSpacing: "1px"
         }}
-      >Buffering {loaderClone}%</div>
+      >Buffering {loadedNumber}%</div>
     </div>
   )
 }
