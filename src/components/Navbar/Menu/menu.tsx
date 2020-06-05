@@ -15,8 +15,10 @@ const menu:React.FC<any> = ({close,changeCloseToTrue}) => {
         "overflow":"hidden",
         "width":"100%",
         "transition":"transform .3s ease",
+        WebkitTransition:"transform .3s ease",
         "willChange":"transform",
-        "transform":`translateX(${close?"-100vw":"0px"}) translateZ(0)`
+        "transform":`translateX(${close?"-100vw":"0px"}) translateZ(0)`,
+        WebkitTransform:`translateX(${close?"-100vw":"0px"}) translateZ(0)`,
       }}
     >
       <div className={MenuStyles.contents}>
