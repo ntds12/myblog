@@ -14,7 +14,7 @@ const menu:React.FC<any> = ({close,changeCloseToTrue}) => {
       style={{
         "overflow":"hidden",
         "width":"100%",
-        "transition":"transform .5s ease",
+        "transition":"transform .3s ease",
         "willChange":"transform",
         "transform":`translateX(${close?"-100vw":"0px"}) translateZ(0)`
       }}
