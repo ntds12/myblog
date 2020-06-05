@@ -12,11 +12,11 @@ const menu:React.FC<any> = ({close,changeCloseToTrue}) => {
     <div 
       className={MenuStyles.menu}
       style={{
-        "width":close?"0":"100%",
         "overflow":"hidden",
+        "width":"100%",
         "transition":"all .5s linear",
-        "willChange":"width",
-        "transform":"translateZ(0)"
+        "willChange":"transform",
+        "transform":`translateX(${close?"-100vw":"0px"}) translateZ(0)`
       }}
     >
       <div className={MenuStyles.contents}>
