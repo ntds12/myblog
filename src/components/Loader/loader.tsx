@@ -28,28 +28,20 @@ const loader: FC<any> = () => {
 
   const loadedWatcher = async () => {
     while (true) {
-      if (firstFont) {
-        setLoadedNumber((val: any) => 50);
-      }
-
-      if (secondFont) {
-        setLoadedNumber((val: any) => 100);
-        loaderCloneHalf();
-        break;
-      }
 
       if (firstFont && secondFont) {
-        await sleep(100);
+        setLoadedNumber((val: any) => 100);
         loaderCloneFull();
         break;
       }
 
       if (loaderClone < 100) {
-        console.log(loaderClone);
         await inc();
       };
 
-      loaderCloneInc();
+      if (!firstFont || !secondFont) {
+        loaderCloneInc();
+      }
       await sleep(10);
     }
   }
