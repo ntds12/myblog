@@ -39,7 +39,7 @@ const loader: FC<any> = () => {
         await inc();
       };
 
-      if (!firstFont || !secondFont) {
+      if (!firstFont || !secondFont && loaderClone < 100) {
         loaderCloneInc();
       }
       await sleep(10);
