@@ -4,17 +4,26 @@ import * as MenuStyles from "./Menu.module.scss"
 import { Link } from "gatsby"
 
 const menu: React.FC<any> = ({ close, changeCloseToTrue }) => {
+  const [counter, setCounter] = useState(0)
+
+  useEffect(() => {
+    if (!close) {
+      setCounter((val: any) => val + 1)
+    }
+  }, [close])
+
   return (
     <div
       className={MenuStyles.menu}
       style={{
         overflow: "hidden",
-        width: "100%",
+        width: "68%",
         willChange: "transform",
         transform: "translateX(-100vw)",
-        animation: close
-          ? "closeMenu .3s ease forwards"
-          : "openMenu .3s ease forwards",
+        animation:
+          close
+            ? `${counter > 0 ? "closeMenu" : ""} .4s ease forwards`
+            : "openMenu .4s ease forwards"
       }}
     >
       <div className={MenuStyles.contents}>
@@ -40,6 +49,7 @@ const menu: React.FC<any> = ({ close, changeCloseToTrue }) => {
         </p>
         <hr className={MenuStyles.p_blog_link_hr} />
       </div>
+
     </div>
   )
 }

@@ -44,17 +44,20 @@ body {
 
 @keyframes openMenu {
   0% {
-    transform: translateX(-100vw);
+    transform: translateX(-100vw) translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateX(0) translate3d(0, 0, 0);
   }
 }
 
 @keyframes closeMenu {
+  0% {
+    transform: translateX(0) translate3d(0, 0, 0);
+  }
 
-  to {
-    transform: translateX(-100vw);
+  100% {
+    transform: translateX(-100vw) translate3d(0, 0, 0);
   }
 }
