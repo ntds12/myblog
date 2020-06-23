@@ -17,7 +17,7 @@ const menu: React.FC<any> = ({ close, changeCloseToTrue }) => {
       className={MenuStyles.menu}
       style={{
         overflow: "hidden",
-        width: "68%",
+        width: "400px",
         willChange: "transform",
         transform: "translateX(-100vw)",
         animation:

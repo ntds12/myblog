@@ -127,6 +127,11 @@ const navbar = () => {
         if (mounted.current) setLinesColor((val: any) => val = false);
       }
     });
+    typeof window !== 'undefined' && window.addEventListener('resize', () => {
+      if (innerWidth > 400) {
+        setClose(true);
+      }
+    });
   });
 
   return (
