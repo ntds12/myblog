@@ -17,13 +17,12 @@ const menu: React.FC<any> = ({ close, changeCloseToTrue }) => {
       className={MenuStyles.menu}
       style={{
         overflow: "hidden",
-        width: "400px",
         willChange: "transform",
         transform: "translateX(-100vw)",
         animation:
           close
             ? `${counter > 0 ? "closeMenu" : ""} .4s ease forwards`
-            : "openMenu .4s ease forwards"
+            : "openMenu .4s ease forwards",
       }}
     >
       <div className={MenuStyles.contents}>
